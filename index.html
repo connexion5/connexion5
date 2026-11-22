@@ -594,7 +594,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     </div>
     <div class="facts">
       <div><div class="n">6<b>+</b></div><div class="h" style="margin-top:8px">AÑOS CREANDO</div></div>
-      <div><div class="h">HABILIDADES</div>FOTOGRAFÍA<br>DIRECTORA CREATIVA<br>CREADORA DE CONTENIDO<br>DISEÑO<br>ESTRATEGIA Y PAUTA (META)</div>
+      <div><div class="h">HABILIDADES</div>FOTOGRAFÍA<br>DIRECTORA CREATIVA<br>CREADORA DE CONTENIDO<br>DISEÑO<br>ESTRATEGIA Y PUBLICIDAD EN REDES</div>
       <div><div class="h">HERRAMIENTAS</div>ADOBE PHOTOSHOP<br>ADOBE ILLUSTRATOR<br>ADOBE LIGHTROOM<br>CAPCUT<br>HIGGSFIELD IA</div>
     </div>
     <p class="iconic">¡VOLVAMOS ICÓNICA TU MARCA!</p>
@@ -604,7 +604,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 <section id="servicios" class="svc">
   <div class="split rv">
     <p class="lbl">Servicios</p>
-    <p class="st">Construyo estrategias de comunicación y gestiono su presencia y pauta digital. <span>Con o sin IA, como el cliente lo prefiera.</span></p>
+    <p class="st">Construyo estrategias de comunicación y gestiono su presencia y publicidad en redes. <span>Con o sin IA, como el cliente lo prefiera.</span></p>
   </div>
   <div class="acc" id="acc"></div>
 </section>
@@ -726,7 +726,7 @@ const SVC = [
   { t:'Dirección creativa', d:'Construyo el lenguaje visual, los sentidos y la narrativa que hacen que una marca se sienta viva y aspiracional. Del moodboard al proyecto final, todo es intencional.', l:['Concepto, estrategia y moodboard','Identidad visual para marcas','Estilo y dirección de arte','Fotografía de moda y producto'] },
   { t:'Fotografía', d:'Fotografía editorial y de lifestyle con una mirada creativa y cinematográfica. Desde tomas de producto hasta imágenes completas de campaña que elevan la percepción de la marca. Cada encuadre tiene intención.', l:['Fotografía editorial','Lifestyle y campaña','Retratos naturales','Viaje, hoteles y espacios'] },
   { t:'Creación de contenido', d:'Reels, contenido y campañas para marcas, mezclando narrativa, imágenes creativas y momentos reales que conectan. Cada pieza está pensada para construir proyectos con sentidos.', l:['Reels Instagram & TikTok','Fotografía de estilo de vida','Campañas','Demostraciones de producto','Viaje, hoteles y espacios'] },
-  { t:'Estrategia y pauta', d:'Estrategias de comunicación y gestión de la presencia y la pauta digital de la marca en Meta.', l:['Estrategia de contenido','Meta Ads','Calendario','Métricas'] }
+  { t:'Estrategia y publicidad', d:'Estrategias de comunicación y gestión de la presencia y la publicidad de la marca en Instagram y Facebook.', l:['Estrategia de contenido','Publicidad en Instagram y Facebook','Calendario','Métricas'] }
 ];
 
 /* loader */
@@ -861,7 +861,7 @@ function setAcc(i) { ais.forEach((a, j) => { a.setAttribute('aria-expanded', j =
 ais.forEach((a, i) => a.addEventListener('click', () => setAcc(a.getAttribute('aria-expanded') === 'true' ? -1 : i)));
 
 /* contacto */
-const NEEDS = ['Dirección creativa','Fotografía','Contenido','Producción completa','Pauta Meta'];
+const NEEDS = ['Dirección creativa','Fotografía','Contenido','Producción completa','Publicidad en redes'];
 let need = '';
 $('needs').innerHTML = NEEDS.map(n => '<button type="button" class="need" aria-pressed="false">' + n + '</button>').join('');
 const form = $('form'), stepsEl = [...form.querySelectorAll('.steps i')];

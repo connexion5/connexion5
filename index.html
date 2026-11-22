@@ -479,6 +479,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .c-in>.rv:first-child{display:contents}
   .c-in .lbl{order:1}.c-in h2{order:2}.c-in .fcard{order:3;margin-top:26px}.c-in .data{order:4}.c-in .toast{order:5}
   .flow,.wc-flow{touch-action:pan-y}
+  .wp .ex b{font-size:clamp(34px,11vw,52px);white-space:nowrap}
   .about .me{z-index:2}
   .p-info{padding:40px var(--pad)}
   .p-info .lead{font-size:19px;margin-bottom:24px}
@@ -695,7 +696,7 @@ const P = [
   { name:'STREET', cat:['Editorial'], kind:'Editorial de moda', hand:'la calle como estudio', year:'2026', roles:'Dirección creativa\nFotografía\nPost producción', pills:['Editorial de moda','Fotografía'],
     lead:'La calle como estudio. Movimiento, luz natural y actitud sin filtro.', text:'Un editorial pensado para la ciudad: escaleras, empedrado y luz de tarde como set.\n\nIncluye un proyecto creado con IA.',
     imgs:[['st-ladrillos','Modelo en el piso de ladrillos'],['st-empedrado2','Calle empedrada'],['ny-gorra','Retrato con gorra y collares','Proyecto IA'],['st-auto','Retrato desde el auto'],['st-tatuajes2','Retrato con tatuajes'],['ny-grillz','Primer plano con grillz','Proyecto IA']] },
-  { name:'PROPIEDADES', cat:['Espacios'], kind:'Real estate & hospitality · foto y video', hand:'recorrer antes de visitar', year:'2026', roles:'Fotografía\nGuion\nFilmación\nEdición', pills:['Video','Fotografía','Real estate'],
+  { name:'PROPIEDADES', cat:['Espacios'], kind:'Real estate · foto y video', hand:'recorrer antes de visitar', year:'2026', roles:'Fotografía\nGuion\nFilmación\nEdición', pills:['Video','Fotografía','Real estate'],
     lead:'Recorridos de propiedades y espacios en video.', text:'Guion, cámara y edición pensados para que el espacio se recorra antes de visitarlo.\n\nCada propiedad con su propio ritmo: la luz, los materiales y ese detalle que la hace distinta.',
     vids:[['prop-ovl','OVL · Rosario'],['prop-funes','Casa Kentucky · Funes'],['prop-entrerios','Entre Ríos 430 · M2 Rosario'],['prop-casa','Casa Kentucky · Funes'],['masea','Masea · Rosario']],
     imgs:[['prop-living-a','Living de doble altura con madera y hormigón'],['prop-cocina','Cocina con isla de hormigón'],['prop-edificio','Edificio con estructura de columnas ramificadas'],['prop-jardin-int','Jardín interior bajo la claraboya'],['prop-galeria','Galería con pérgola de madera'],['prop-escalera','Escalera en doble altura'],['prop-sendero','Sendero del jardín'],['prop-acceso','Acceso con pérgola y luz rayada'],['prop-living-b','Living con escalera y patio interno'],['prop-entrada','Entrada con listones de madera']] },
@@ -737,6 +738,12 @@ if (reduce) endLoader(); else {
   requestAnimationFrame(step);
 }
 
+function swipe(el, fn) { let sx = null, sy = 0, mx = null;
+  el.addEventListener('touchstart', e => { const t = e.touches[0]; sx = t.clientX; sy = t.clientY; }, { passive: true });
+  el.addEventListener('touchend', e => { if (sx === null) return; const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy; sx = null; if (Math.abs(dx) > 30 && Math.abs(dx) > Math.abs(dy) * 0.8) { el.__sw = Date.now(); fn(dx < 0 ? 1 : -1); } }, { passive: true });
+  el.addEventListener('pointerdown', e => { if (e.pointerType === 'mouse') mx = e.clientX; });
+  el.addEventListener('pointerup', e => { if (mx === null || e.pointerType !== 'mouse') return; const dx = e.clientX - mx; mx = null; if (Math.abs(dx) > 40) { el.__sw = Date.now(); fn(dx < 0 ? 1 : -1); } });
+  el.addEventListener('click', e => { if (Date.now() - (el.__sw || 0) < 400) { e.stopPropagation(); e.preventDefault(); } }, true); }
 /* portada: coverflow + regla */
 const FL = [['MIXO','mixo-barman'],['CIUDAD','corrientes'],['MIXO','mixo-copa-humo'],
   ['ACID','ac-martini'],['CIUDAD','chinatown'],['MIXO','mixo-soplete'],['EN EL CAMPO','vc-sombrero-maizal'],['CIUDAD','feroz'],['MIXO','mixo-naranja'],['YOGA FLOW','yf-buda'],['YOGA FLOW','yf-silueta'],['PLAYA','br-retrato-playa'],['MIXO','mx-fuego'],['EN EL CAMPO','vc-perfil']];
@@ -771,7 +778,7 @@ function fRestart() { clearTimeout(ft); if (!reduce) ft = setTimeout(() => { if 
 tiles.forEach(el => el.addEventListener('click', () => { touched = Date.now(); const d = +el.dataset.d; if (d === 0) { const nm = FL[((act % FL.length) + FL.length) % FL.length][0], wi = WORLDS.findIndex(w => w.projects.indexOf(nm) >= 0); if (wi >= 0) openW(wi); else openP(byName[nm]); } else fGo(act + d); }));
 flow.addEventListener('mouseenter', () => touched = Date.now());
 $('fPrev').onclick = () => { touched = Date.now(); fGo(act - 1); }; $('fNext').onclick = () => { touched = Date.now(); fGo(act + 1); };
-let tx = null; flow.addEventListener('pointerdown', e => tx = e.clientX); flow.addEventListener('pointerup', e => { if (tx === null) return; const dx = e.clientX - tx; tx = null; if (Math.abs(dx) > 40) { touched = Date.now(); fGo(act + (dx < 0 ? 1 : -1)); } });
+swipe(flow, d => { touched = Date.now(); fGo(act + d); });
 addEventListener('resize', layout); layout(); fRestart();
 
 /* frase */
@@ -826,7 +833,7 @@ function placeM() { const r = mst.getBoundingClientRect(), c = mst.querySelector
   $('mlines').innerHTML = L; }
 addEventListener('resize', placeM); if (document.fonts) document.fonts.ready.then(placeM); placeM();
 /* video */
-const VID = [['mixo-llamada','Mixo · Reel',1],['mixo-evento','Mixo · Evento'],['prop-ovl','Real estate · Recorrido'],['masea','Hospitality · Reel'],['prop-funes','Real estate · Recorrido'],['prop-entrerios','Real estate · Recorrido'],['prop-casa','Real estate · Recorrido']];
+const VID = [['mixo-llamada','Mixo · Reel',1],['mixo-evento','Mixo · Evento'],['prop-ovl','Real estate · Recorrido'],['masea','Real estate · Reel'],['prop-funes','Real estate · Recorrido'],['prop-entrerios','Real estate · Recorrido'],['prop-casa','Real estate · Recorrido']];
 const reel = $('reel');
 reel.innerHTML = VID.map((v, i) => '<button class="rc' + (v[2] ? ' h' : '') + '" data-v="' + i + '" aria-label="Ver video: ' + esc(v[1]) + '"><video src="vid/' + v[0] + '.mp4#t=0.1" muted loop playsinline preload="metadata"></video><span class="n">' + pad2(i + 1) + '</span><span class="cap"><span><small>' + esc(v[1]) + '</small></span><span class="pl"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span></span></button>').join('');
 const rcs = [...reel.children];
@@ -924,8 +931,7 @@ function openW(wi) {
   wF = { go: d => go(a + d) };
   panel.querySelectorAll('[data-j]').forEach(b => b.onclick = () => load(+b.dataset.j));
   $('wcP').onclick = () => go(a - 1); $('wcX').onclick = () => go(a + 1); $('wcG').onclick = () => openP(pk, wi);
-  let tx = null; F.addEventListener('pointerdown', e => tx = e.clientX); F.addEventListener('pointerup', e => { if (tx === null) return; const dx = e.clientX - tx; tx = null; if (Math.abs(dx) > 40) go(a + (dx < 0 ? 1 : -1)); });
-  F.addEventListener('click', e => { if (Math.abs((tx ?? e.clientX) - e.clientX) > 40) e.stopPropagation(); }, true);
+  swipe(F, d => go(a + d));
   panel.scrollTop = 0; panel.classList.add('open'); document.body.style.overflow = 'hidden'; clearTimeout(ft); clearTimeout(wT);
   load(0); if (window.__wcR) removeEventListener('resize', window.__wcR); window.__wcR = () => { if (els.length) lay(); }; addEventListener('resize', window.__wcR);
   $('pX').onclick = closeP; $('pN').onclick = () => { panel.scrollTo({ top: 0 }); openW((wi + 1) % WORLDS.length); };

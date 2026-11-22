@@ -747,7 +747,7 @@ function swipe(el, fn) { let sx = null, sy = 0, mx = null;
   el.addEventListener('click', e => { if (Date.now() - (el.__sw || 0) < 400) { e.stopPropagation(); e.preventDefault(); } }, true); }
 /* portada: coverflow + regla */
 const FL = [['MIXO','mixo-barman'],['CIUDAD','corrientes'],['MIXO','mixo-copa-humo'],
-  ['ACID','ac-martini'],['CIUDAD','chinatown'],['MIXO','mixo-soplete'],['EN EL CAMPO','vc-sombrero-maizal'],['CIUDAD','feroz'],['MIXO','mixo-naranja'],['YOGA FLOW','yf-buda'],['YOGA FLOW','yf-silueta'],['PLAYA','br-retrato-playa'],['MIXO','mx-fuego'],['EN EL CAMPO','vc-perfil']];
+  ['ACID','ac-martini'],['CIUDAD','chinatown'],['MIXO','mixo-soplete'],['EN EL CAMPO','vc-sombrero-maizal'],['CIUDAD','feroz'],['MIXO','mixo-naranja'],['YOGA FLOW','yf-buda'],['PLAYA','br-retrato-playa'],['MIXO','mx-fuego'],['EN EL CAMPO','vc-perfil']];
 const byName = {}; P.forEach((p, i) => byName[p.name] = i);
 const flow = $('flow');
 flow.innerHTML = FL.map((f, i) => '<button class="tile" aria-label="Ver ' + esc(f[0]) + '"><img src="' + I(f[1]) + '" alt="" ' + (i > 6 ? 'loading="lazy"' : '') + '></button>').join('');

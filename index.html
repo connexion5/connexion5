@@ -315,7 +315,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .bento .c:hover img{transform:scale(1.05)}
 .b1{grid-column:1/4;grid-row:1}.b2{grid-column:4/7;grid-row:1}.b3{grid-column:1/3;grid-row:2}.b4{grid-column:3/5;grid-row:2}.b5{grid-column:5/7;grid-row:2}.b6{grid-column:1/4;grid-row:3}.b7{grid-column:4/7;grid-row:3}
 .bt{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:flex-end;gap:clamp(12px,2vw,26px);padding:0 clamp(16px,2.4vw,30px) clamp(14px,1.8vw,22px);color:var(--on);pointer-events:none;text-shadow:0 2px 30px rgba(0,0,0,.4)}
-.bt b{font-family:var(--disp);font-weight:400;font-size:clamp(70px,12vw,190px);line-height:.8;letter-spacing:.01em}
+.bt b{font-family:var(--disp);font-weight:400;font-size:clamp(40px,8vw,120px);line-height:.8;letter-spacing:.01em}
 .bt i{flex:1;height:1px;background:currentColor;max-width:200px;margin-bottom:.9em}
 .bt span{margin-bottom:.6em;font-size:11px;letter-spacing:.2em}
 .p-info{padding:clamp(56px,8vw,110px) var(--pad)}
@@ -398,6 +398,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 /* mundo v2: capítulos con película */
 .w-tabs{display:flex;gap:clamp(18px,2.6vw,36px);padding:4px var(--pad) 0;overflow-x:auto;scrollbar-width:none;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
 .w-tabs::-webkit-scrollbar{display:none}
+.w-tabs.pj{padding-top:0;padding-bottom:14px;font-size:10.5px;gap:clamp(14px,2vw,28px)}
+.w-tabs.pj button[aria-current="true"]{color:var(--red)}
 .w-tabs button{padding:8px 0;color:var(--muted);border-bottom:1px solid transparent;transition:color .3s,border-color .3s}
 .w-tabs button:hover{color:var(--ink)}
 .w-tabs button[aria-current="true"]{color:var(--ink);border-color:var(--red)}
@@ -483,6 +485,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .c-in>.rv:first-child{display:contents}
   .c-in .lbl{order:1}.c-in h2{order:2}.c-in .fcard{order:3;margin-top:26px}.c-in .data{order:4}.c-in .toast{order:5}
   .flow,.wc-flow{touch-action:pan-y}
+  .bt span,.bt i{display:none}
   .wp .ex b{font-size:clamp(34px,11vw,52px);white-space:nowrap}
   .about .me{z-index:2}
   .p-info{padding:40px var(--pad)}
@@ -699,7 +702,7 @@ const P = [
   { name:'STREET', cat:['Editorial'], kind:'Editorial de moda', hand:'la calle como estudio', year:'2026', roles:'Dirección creativa\nFotografía\nPost producción', pills:['Editorial de moda','Fotografía'],
     lead:'La calle como estudio. Movimiento, luz natural y actitud sin filtro.', text:'Un editorial pensado para la ciudad: escaleras, empedrado y luz de tarde como set.\n\nIncluye un proyecto creado con IA.',
     imgs:[['st-ladrillos','Modelo en el piso de ladrillos'],['st-empedrado2','Calle empedrada'],['ny-gorra','Retrato con gorra y collares','Proyecto IA'],['st-auto','Retrato desde el auto'],['st-tatuajes2','Retrato con tatuajes'],['ny-grillz','Primer plano con grillz','Proyecto IA']] },
-  { name:'PROPIEDADES', cat:['Espacios'], kind:'Real estate · foto y video', hand:'recorrer antes de visitar', year:'2026', roles:'Fotografía\nGuion\nFilmación\nEdición', pills:['Video','Fotografía','Real estate'],
+  { name:'PROPIEDADES Y ESPACIOS', cat:['Espacios'], kind:'Real estate · foto y video', hand:'recorrer antes de visitar', year:'2026', roles:'Fotografía\nGuion\nFilmación\nEdición', pills:['Video','Fotografía','Real estate'],
     lead:'Recorridos de propiedades y espacios en video.', text:'Guion, cámara y edición pensados para que el espacio se recorra antes de visitarlo.\n\nCada propiedad con su propio ritmo: la luz, los materiales y ese detalle que la hace distinta.',
     vids:[['prop-ovl','OVL · Rosario'],['prop-funes','Casa Kentucky · Funes'],['prop-entrerios','Entre Ríos 430 · M2 Rosario'],['prop-casa','Casa Kentucky · Funes'],['masea','Masea · Rosario']],
     imgs:[['prop-living-a','Living de doble altura con madera y hormigón'],['prop-cocina','Cocina con isla de hormigón'],['prop-edificio','Edificio con estructura de columnas ramificadas'],['prop-jardin-int','Jardín interior bajo la claraboya'],['prop-galeria','Galería con pérgola de madera'],['prop-escalera','Escalera en doble altura'],['prop-sendero','Sendero del jardín'],['prop-acceso','Acceso con pérgola y luz rayada'],['prop-living-b','Living con escalera y patio interno'],['prop-entrada','Entrada con listones de madera']] },
@@ -719,7 +722,7 @@ const P = [
 P.forEach((p, i) => p.n = pad2(i + 1));
 const RAT = {"lumo-focus":1.5003,"lumo-servir":1.5003,"lumo-energy":0.6669,"lumo-cubos":1.5003,"5bdb528f06fdd6fceaab9684c4fd54bb":0.7341,"st-tatuajes-v":1.3699,"d48c0cbec6501f16288d8c630b6030ea":1.3293,"la-collar-mar":1.2414,"yf-silvia-medita":1.5009,"vc-sombrero-maizal":1.4427,"prop-cocina":0.6663,"61af8c3a526a8da29a1c3d99174bec95":2.3291,"3ea65e0adbfbc9c566efa2ee7d040585":1.1458,"yf-meditacion":0.6663,"prop-acceso":0.6663,"ac-baile":1.3393,"mixo-soplete":1.5,"32572355bbe654f6f3c6ca3bfb0d2c36":1.3944,"st-tatuajes":0.6687,"yf-silueta":1.4453,"prop-sendero":0.6663,"e1816cedf95973422ba5c821ca5697d4":0.6875,"05e07f2cdb6b19dbaf30b3078c8dece0":1.3864,"6f4df04cb983904f8f6ce7eb9e929fbd":2.3191,"002e83db1177549fa8f99bdd764d5464":2.3291,"yami-3":1.5251,"31deee972cb498a903f0a8c70a7db40c":1.1458,"st-tatuajes2":0.6685,"vc-flores":1.0997,"f9a496e51b4c2c303c487763bb5e4c0c":1.1787,"086d4aa727b69268658cf2f31a5b0c24":0.5596,"yf-brazos":1.5123,"21d1ed20290f4ef1839d923595d34f65":0.6875,"prop-ovl-a":1.3333,"yf-silvia":1.5009,"mixo-barra":1.145,"mixo-naranja":1.6014,"br-retrato-playa":1.4639,"mixo-copa-humo":0.6956,"retrato-rulos":1.4019,"f039aeb2a367e253cb520e1d8fe89419":1.1458,"ac-martini":1.3393,"66cf0e7fc9771cb594c462ee32cc8382":1.1458,"feroz":1.5,"4cd07c359edf73e8d84b14597a971286":1.1458,"ac-espejo":1.3389,"a31564879b7bdf85e9bd929dda39d1f3":1.3422,"st-empedrado2":1.4993,"prop-living-b":0.6663,"687ff0f5aada40155298885c70f7da9f":1.1458,"mx-copa-mano":1.5052,"la-anillo-celeste":1.2414,"arraial":1.5,"prop-funes-a":1.7778,"st-auto":1.5474,"vc-recostada":0.6663,"yami-2":1.5005,"prop-funes-b":1.7778,"623f748877ae2455ec0634e62e61e5e8":1.0196,"prop-edificio":1.7778,"ed6a85654d80f4e5b12b268559a14636":2.3391,"vc-perfil":1.3234,"la-dijes":1.3393,"yami-1":1.5005,"ny-gorra":1.3389,"prop-galeria":0.6663,"prop-jardin-int":0.6663,"cbe101701a09328a4aad0929fbd9c67a":2.3191,"e4e9af77571a72b6aabc2dc464140743":1.3422,"mx-fuego":1.3781,"prop-entrerios-a":1.3333,"ny-grillz":1.3389,"vc-brindis":1.4298,"ecde94b07cc18cb798db0d34b428fc37":1.5443,"corrientes":1.5,"0c8fd85e09210bcf6bdc61f81e4bcb0c":1.3363,"vc-canasta":1.4388,"playa-vendedora":1.5,"st-ladrillos":0.7087,"prop-casa-a":1.7778,"prop-escalera":0.6663,"la-aro-modelo":1.2414,"ac-dardos":1.3393,"vc-botella":1.5137,"prop-living-a":0.6663,"mixo-barman":1.5139,"chinatown":1.5,"st-empedrado":1.4995,"ef642e1e9b5ad22d6894261985815609":0.4189,"prop-entrada":0.6663,"vc-baranda":1.5009,"mx-bartender":0.6769,"la-agata":1.3393,"28a2ab7701a42862c8e5fb2a09d35b6d":1.3991,"masea-a":1.7778,"prop-ovl-b":1.3333,"mx-humo-copa":1.5009,"yf-buda":1.5009,"42680f5dd0cbcb6ef83f4e5cabd1f04a":2.9945,"la-aros-arena":1.2414,"mo-ojos":0.5587,"mx-soplete-spray":1.5109,"2d6c2b39a93cc79e2ac455132e79ab1b":0.4086,"vc-tranquera":1.4995,"lumo-jugos":1.5009,"0ba48435c399ae96fa27767280e557c7":1.3131,"la-anillos":1.3393,"cce0cb67963b180345c763736e678a2a":0.5598,"mixo-humo-manos":0.8689,"e26873864502d0d19af7c7f62d11325c":1.4413,"e1c27dd417b73cddc2d26de81f6406e6":1.8506};
 const WORLDS = [
-  { n:'01', name:'Viaje & Espacios', img:'feroz', pos:'50% 50%', line:'Fotografía y video de viaje, propiedades y espacios.', projects:['PROPIEDADES','PLAYA','CIUDAD'] },
+  { n:'01', name:'Viaje & Espacios', img:'feroz', pos:'50% 50%', line:'Fotografía y video de viaje, propiedades y espacios.', projects:['PROPIEDADES Y ESPACIOS','PLAYA','CIUDAD'] },
   { n:'02', name:'Experiencias', img:'yf-buda', pos:'50% 40%', line:'Eventos, experiencias y bienestar. Lo que se vive, contado con estética.', projects:['MIXO','YOGA FLOW','LUMO'] },
   { n:'03', name:'Gastronomía', img:'mixo-soplete', pos:'50% 55%', line:'Producto y experiencia. Fotografía gastronómica con textura, luz y deseo.', projects:['MIXO','VINE & CAMP'] },
   { n:'04', name:'Editorial', img:'st-ladrillos', pos:'62% 50%', line:'Editoriales, campañas y retratos donde el estilo cuenta una historia. Concepto y dirección de arte.', projects:['EN EL CAMPO','ACID','STREET',"L'AUBE"] }
@@ -886,7 +889,8 @@ let feed = [], fAll = [], poI = 0;
 const ICO_V = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>';
 const ICO_G = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h11a3 3 0 0 1 3 3v11h-2V6a1 1 0 0 0-1-1H7z"/><rect x="3" y="7" width="14" height="14" rx="2"/></svg>';
 let wF = null;
-function openW(wi) {
+function openW(wi) { return openP(byN[WORLDS[wi].projects[0]], wi); }
+function openWOld(wi) {
   curW = wi; const w = WORLDS[wi], nx = WORLDS[(wi + 1) % WORLDS.length];
   const ps = w.projects.map(n => byN[n]), nm = w.name.split(' & ');
   const items = k => { const p = P[k]; return [...(p.noGal ? [] : p.imgs.map((im, j) => ({ im, j, r: RAT[im[0]] || 1.25 }))), ...(p.vids || []).map(v => ({ v, r: v[2] ? 9 / 16 : 16 / 9 }))]; };
@@ -956,21 +960,28 @@ function openP(i, fromW) {
   cur = i; const p = P[i], nx = P[(i + 1) % P.length];
   const pick = p.imgs.slice(0, Math.min(8, p.imgs.length));
   lbList = p.imgs.map(im => ({ src: I(im[0]), alt: im[1], tag: im[2] }));
-  panel.innerHTML = '<div class="p-top"><button id="pX">← ' + (curW >= 0 ? esc(WORLDS[curW].name.toUpperCase()) : 'MUNDOS') + '</button><span style="color:var(--muted)">Nº ' + p.n + ' / ' + pad2(P.length) + '</span></div>' +
+  const wp = curW >= 0 ? WORLDS[curW].projects.map(n => byN[n]) : [i], wj = wp.indexOf(i);
+  let ni, nlab; if (curW >= 0 && wj < wp.length - 1) { ni = wp[wj + 1]; nlab = 'SIGUIENTE PROYECTO'; } else if (curW >= 0) { const nw = (curW + 1) % WORLDS.length; ni = byN[WORLDS[nw].projects[0]]; nlab = 'SIGUIENTE MUNDO — ' + WORLDS[nw].name.toUpperCase(); } else { ni = (i + 1) % P.length; nlab = 'SIGUIENTE — Nº ' + P[ni].n; }
+  const nxp = P[ni];
+  panel.innerHTML = '<div class="p-top"><button id="pX">← MUNDOS</button><span style="color:var(--muted)">' + (curW >= 0 ? 'MUNDO ' + WORLDS[curW].n + ' / 04' : 'Nº ' + p.n) + '</span></div>' +
+    (curW >= 0 ? '<div class="w-tabs" aria-label="Mundos">' + WORLDS.map((x, k) => '<button data-w="' + k + '" aria-current="' + (k === curW) + '">' + x.n + ' ' + esc(x.name) + '</button>').join('') + '</div>' +
+      (wp.length > 1 ? '<div class="w-tabs pj" aria-label="Proyectos">' + wp.map((k, j) => '<button data-pj="' + k + '" aria-current="' + (k === i) + '">' + pad2(j + 1) + ' ' + esc(P[k].name) + '</button>').join('') + '</div>' : '') : '') +
     '<div class="bento">' + pick.map((im, k) => '<div class="c k' + k + '" style="flex-grow:' + (1 / (RAT[im[0]] || 1.25)).toFixed(3) + '" data-r="' + (1 / (RAT[im[0]] || 1.25)).toFixed(4) + '"><img src="' + I(im[0]) + '" alt=""></div>').join('') +
     '<div class="bt"><b>' + esc(p.name) + '</b><i></i><span>' + esc(p.kind.toUpperCase()) + ' — ' + p.year + '</span></div></div>' +
     '<div class="p-info"><p class="lead">' + esc(p.lead) + '</p><div class="p-cols"><div><h4>Concepto</h4><p>' + esc(p.text) + '</p></div><div><dl><div><dt>Rol</dt><dd>' + esc(p.roles) + '</dd></div><div><dt>Tipo</dt><dd>' + esc(p.kind) + '</dd></div><div><dt>Año</dt><dd>' + p.year + '</dd></div><div><dt>Dirección creativa</dt><dd>Connexion5 — Yamila Varano</dd></div></dl></div></div></div>' +
     (p.vids ? '<div class="vids">' + p.vids.map(v => '<figure' + (v[2] ? ' class="h"' : '') + '><video src="vid/' + v[0] + '.mp4#t=0.1" muted loop playsinline preload="metadata" aria-label="Video: ' + esc(v[1]) + '"></video><button class="snd" aria-label="Activar sonido">SONIDO OFF</button><figcaption><span>' + esc(v[1]) + '</span><span>Video</span></figcaption></figure>').join('') + '</div>' : '') +
     (p.noGal ? '' : '<div class="gal">' + p.imgs.map((im, k) => '<button data-lb="' + k + '" aria-label="Ver foto: ' + esc(im[1]) + '"><img src="' + I(im[0]) + '" alt="' + esc(im[1]) + '" loading="lazy">' + (im[2] ? '<span class="gtag">' + esc(im[2]) + '</span>' : '') + '</button>').join('') + '</div>') +
-    '<button class="p-next" id="pN"><span><small>SIGUIENTE — Nº ' + nx.n + '</small><b>' + esc(nx.name) + ' →</b></span><img src="' + I(nx.imgs[0][0]) + '" alt=""></button>';
-  panel.scrollTop = 0; panel.classList.add('open'); document.body.style.overflow = 'hidden'; clearTimeout(ft);
-  $('pX').onclick = () => { if (curW >= 0) openW(curW); else closeP(); }; $('pN').onclick = () => { panel.scrollTo({ top: 0 }); openP((i + 1) % P.length); };
+    '<button class="p-next" id="pN"><span><small>' + esc(nlab) + '</small><b>' + esc(nxp.name) + ' →</b></span><img src="' + I(nxp.imgs[0][0]) + '" alt=""></button>';
+  panel.scrollTop = 0; panel.classList.add('open'); document.body.style.overflow = 'hidden'; clearTimeout(ft); clearTimeout(wT);
+  $('pX').onclick = closeP; $('pN').onclick = () => { panel.scrollTo({ top: 0 }); openP(ni, nlab.indexOf('MUNDO') >= 0 ? (curW + 1) % WORLDS.length : curW); };
+  panel.querySelectorAll('[data-w]').forEach(b => b.onclick = () => { if (+b.dataset.w !== curW) { panel.scrollTo({ top: 0 }); openW(+b.dataset.w); } });
+  panel.querySelectorAll('[data-pj]').forEach(b => b.onclick = () => { const k = +b.dataset.pj; if (k !== i) { panel.scrollTo({ top: 0 }); openP(k, curW); } });
   panel.querySelectorAll('[data-lb]').forEach(b => b.onclick = () => openLb(+b.dataset.lb));
   wireVids(panel); sizeBento(); if (window.__bR) removeEventListener('resize', window.__bR); window.__bR = sizeBento; addEventListener('resize', sizeBento);
   setTimeout(() => $('pX').focus({ preventScroll: true }), 400);
 }
 function sizeBento() { const b = panel.querySelector('.bento'); if (!b) return;
-  const all = [...b.querySelectorAll('.c')], Hmax = innerHeight * (innerWidth < 860 ? .62 : .74), max = innerWidth < 860 ? 2 : 4;
+  const all = [...b.querySelectorAll('.c')], Hmax = innerHeight * (innerWidth < 860 ? .48 : .56), max = innerWidth < 860 ? 2 : 4;
   const tgt = (b.clientWidth - 12) / Hmax; let sum = 0; const cs = [];
   all.forEach(c => { const r = +c.dataset.r; if (cs.length < max && (!cs.length || sum + r <= tgt * 1.6)) { cs.push(c); sum += r; c.style.display = ''; } else c.style.display = 'none'; });
   const W = b.clientWidth - 12 - 6 * (cs.length - 1);

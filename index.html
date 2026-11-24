@@ -36,6 +36,39 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .rv{opacity:0;transform:translateY(28px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
 .rv.shown{opacity:1;transform:none}
 
+/* portada */
+.cv{position:relative;height:100svh;min-height:600px;overflow:hidden;isolation:isolate;color:#F4EFE8;background:#0E0D0D;font-family:Archivo,'Helvetica Neue',Arial,sans-serif}
+.cv a{color:inherit}.cv a:hover{opacity:.7}
+.cv-s{font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;line-height:1.4}
+.cv-sp{display:flex;justify-content:space-between}.cv-sp i{font-style:normal}
+.cv-bg{position:absolute;inset:0;z-index:-1}
+.cv-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,13,13,.35),rgba(14,13,13,.1) 35%,rgba(14,13,13,.25) 70%,rgba(14,13,13,.6))}
+.cv-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 40%;filter:grayscale(1) contrast(1.05) brightness(.6);animation:cvz 24s ease-in-out infinite alternate}
+@keyframes cvz{from{transform:scale(1)}to{transform:scale(1.06)}}
+.cv-r1{position:absolute;left:var(--pad);right:var(--pad);top:22px;display:grid;grid-template-columns:24% 1fr 18%;gap:4%;align-items:start}
+.cv-r1 p{margin:0;max-width:330px;justify-self:start;margin-left:20%}
+.cv-r2{position:absolute;left:var(--pad);right:var(--pad);top:30%;display:grid;grid-template-columns:24% 1fr;gap:4%}
+.cv-r2 span:last-child{margin-left:calc(20% * .72)}
+.cv-word{position:absolute;left:var(--pad);right:var(--pad);top:50%;margin:0;transform:translateY(-50%);display:flex;align-items:center;justify-content:space-between;font-weight:300;font-size:clamp(46px,7.2vw,124px);line-height:1;letter-spacing:-.03em;text-transform:uppercase}
+.cv-word .a{display:flex;align-items:flex-end}
+.cv-word .a svg{flex:none;height:.82em;width:auto;margin-left:.1em;fill:#F4EFE8}
+.cv-word .b{flex:1;display:flex;justify-content:space-between;margin-left:7vw}
+.cv-word span{display:inline-block;opacity:0;transform:translateY(30%);animation:cvin 1s cubic-bezier(.2,.7,.2,1) forwards}
+body.loading .cv-word span{animation-play-state:paused}
+@keyframes cvin{to{opacity:1;transform:none}}
+.cv-r3{position:absolute;left:var(--pad);right:var(--pad);bottom:20px;display:grid;grid-template-columns:24% 1fr auto;gap:4%;align-items:end}
+.cv-r3 nav{display:flex;gap:clamp(16px,2.4vw,36px)}
+.nav:not(.solid){opacity:0;pointer-events:none}
+.nav{transition:background .4s,padding .4s,opacity .4s}
+@media (max-width:760px){
+ .cv-bg img{object-position:61% 40%}
+ .cv-r1{grid-template-columns:58% 22%;justify-content:space-between}.cv-r1 p{display:none}
+ .cv-r2{top:calc(56% - 34px);grid-template-columns:1fr}.cv-r2 span:last-child{display:none}
+ .cv-word{flex-direction:column;align-items:center;gap:10px;font-size:15vw;top:56%;transform:none}
+ .cv-word .a{justify-content:center}.cv-word .a svg{height:.8em;width:.46em}.cv-word .b{margin:0;width:100%;padding:0 .12em}
+ .cv-r3{grid-template-columns:1fr auto}.cv-r3 nav{display:none}}
+@media (prefers-reduced-motion:reduce){.cv-word span{animation:none;opacity:1;transform:none}.cv-bg img{animation:none}}
+
 /* loader */
 .loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s}
 .loader.out{opacity:0;visibility:hidden}
@@ -63,7 +96,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .nav.open nav a{padding:14px 0;border-top:1px solid var(--line)}.nav .home{opacity:1;transform:none}}
 
 /* HERO: portada */
-.hero{padding:clamp(80px,7vw,96px) var(--pad) clamp(28px,3vw,40px);text-align:center;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+.hero{padding:clamp(70px,8vw,110px) var(--pad) clamp(28px,3vw,40px);text-align:center;display:flex;flex-direction:column;justify-content:center}
 .hero .eyebrow{margin:0 0 20px}
 .word{margin:0;display:inline-flex;align-items:flex-end;justify-content:center;font-family:'Inter Tight','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(60px,11vw,170px);line-height:.78;letter-spacing:-.055em}
 .word svg{height:.9em;width:auto;margin-left:.03em}
@@ -559,26 +592,22 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
 <header class="nav" id="nav">
   <a href="#top" class="home" aria-label="Connexion5, inicio">connexion<svg class="iso" viewBox="0 0 259 446" aria-hidden="true"><use href="#iso"/></svg></a>
-  <nav aria-label="Principal"><a class="link" href="#mundos">MUNDOS</a><a class="link" href="#video">VIDEO</a><a class="link" href="#estudio">ESTUDIO</a><a class="link" href="#servicios">SERVICIOS</a><a class="link" href="#contacto">CONTACTO</a></nav>
+  <nav aria-label="Principal"><a class="link" href="#mundos">MUNDOS</a><a class="link" href="#estudio">ESTUDIO</a><a class="link" href="#servicios">SERVICIOS</a><a class="link" href="#contacto">CONTACTO</a></nav>
   <span class="clock" id="clock">ROSARIO, AR</span>
   <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
 </header>
 
 <main id="top">
-<section class="hero">
-  <p class="lbl eyebrow">Dirección creativa · Fotografía · Contenido audiovisual</p>
-  <h1 class="word" aria-label="Connexion5">connexion<svg class="iso" viewBox="0 0 259 446" aria-hidden="true"><use href="#iso"/></svg></h1>
-  <p class="lbl sub2">Studio · Rosario, Argentina</p>
-  <div class="flow" id="flow"></div>
-  <div class="dial">
-    <p class="name" id="fName">ACID</p>
-    <div class="ruler" aria-hidden="true"><div class="ticks" id="ticks"></div><i></i></div>
-    <div class="row"><button id="fPrev" aria-label="Proyecto anterior">←</button><span class="mono" id="fMeta">Nº 01</span><button id="fNext" aria-label="Proyecto siguiente">→</button></div>
-  </div>
+<section class="cv" aria-label="Portada">
+  <div class="cv-bg"><img src="img/yami-sombrero.jpg" alt=""></div>
+  <div class="cv-r1 cv-s"><span class="cv-sp" aria-label="Connexion"><i>C</i><i>O</i><i>N</i><i>N</i><i>E</i><i>X</i><i>I</i><i>O</i><i>N</i></span><p>Dirección creativa, fotografía y contenido audiovisual para marcas que quieren verse diferentes. Imágenes con concepto, estética e intención: viaje, experiencias, gastronomía y editorial.</p><span class="cv-sp" aria-label="Studio"><i>S</i><i>T</i><i>U</i><i>D</i><i>I</i><i>O</i></span></div>
+  <div class="cv-r2 cv-s"><span>Rosario, AR</span><span>Dirección creativa · Fotografía · Contenido audiovisual</span></div>
+  <h1 class="cv-word" aria-label="Connexion5 Studio"><span class="a" style="animation-delay:.15s">Connexion<svg viewBox="0 0 259 446" aria-hidden="true"><use href="#iso"/></svg></span><span class="b"><span style="animation-delay:.35s">S</span><span style="animation-delay:.45s">T</span><span style="animation-delay:.55s">U</span><span style="animation-delay:.65s">D</span><span style="animation-delay:.75s">I</span><span style="animation-delay:.85s">O</span></span></h1>
+  <div class="cv-r3 cv-s"><a href="#mundos">Mundos</a><nav aria-label="Secciones"><a href="#estudio">Estudio</a><a href="#servicios">Servicios</a><a href="#produccion">Producción</a></nav><a href="#contacto">Contacto</a></div>
 </section>
 
 <section class="phrase">
-  <p id="phrase">Creo y desarrollo la identidad visual de marcas, a través de la dirección creativa, la fotografía y el contenido.</p>
+  <p id="phrase">Creo y desarrollo la identidad visual de marcas, a través de la dirección creativa, la fotografía y el contenido audiovisual.</p>
 </section>
 
 <section id="mundos" class="worlds-sec">
@@ -605,17 +634,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   <div class="band-wrap" aria-hidden="true"><div class="band"><div id="marq"></div></div></div>
 </section>
 
-<section class="vsec" id="video" aria-label="Video">
-  <div class="v-top rv">
-    <div>
-      <p class="lbl">Video</p>
-      <h2>En movimiento</h2>
-    </div>
-    <div class="side"><p>Reels, spots y recorridos. Guion, cámara y edición pensados para que una marca se vea en movimiento.</p><p class="mono">Tocá un video para verlo con sonido</p></div>
-  </div>
-  <div class="reel rv" id="reel"></div>
-  <div class="v-bar"><span id="vCnt">01 / 07</span><span class="ar"><button id="vPrev" aria-label="Videos anteriores">←</button><button id="vNext" aria-label="Videos siguientes">→</button></span></div>
-</section>
 
 <section id="estudio" class="about">
   <figure class="me rv" style="margin:0">
@@ -646,7 +664,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   <div class="acc" id="acc"></div>
 </section>
 
-<section class="prod">
+<section class="prod" id="produccion">
   <div class="prod-in">
     <div class="prod-ph rv"><img src="img/mixo-barra.jpg" alt="Producción completa en la barra de Mixo" loading="lazy"></div>
     <div class="rv">
@@ -786,12 +804,13 @@ function swipe(el, fn) { let sx = null, sy = 0, mx = null;
 const FL = [['MIXO','mixo-barman'],['CIUDAD','corrientes'],['MIXO','mixo-copa-humo'],
   ['ACID','ac-martini'],['CIUDAD','chinatown'],['MIXO','mixo-soplete'],['EN EL CAMPO','vc-sombrero-maizal'],['CIUDAD','feroz'],['MIXO','mixo-naranja'],['YOGA FLOW','yf-buda'],['PLAYA','br-retrato-playa'],['MIXO','mx-fuego'],['EN EL CAMPO','vc-perfil']];
 const byName = {}; P.forEach((p, i) => byName[p.name] = i);
-const flow = $('flow');
-flow.innerHTML = FL.map((f, i) => '<button class="tile" aria-label="Ver ' + esc(f[0]) + '"><img src="' + I(f[1]) + '" alt="" ' + (i > 6 ? 'loading="lazy"' : '') + '></button>').join('');
+const HAS_FLOW = !!$('flow'); const flow = $('flow') || document.createElement('div');
+if (HAS_FLOW) flow.innerHTML = FL.map((f, i) => '<button class="tile" aria-label="Ver ' + esc(f[0]) + '"><img src="' + I(f[1]) + '" alt="" ' + (i > 6 ? 'loading="lazy"' : '') + '></button>').join('');
 const tiles = [...flow.children];
-$('ticks').innerHTML = '<span></span>'.repeat(400);
+if (HAS_FLOW) $('ticks').innerHTML = '<span></span>'.repeat(400);
 let act = 0, ft = null, touched = 0;
 function layout() {
+  if (!HAS_FLOW) return;
   const W = flow.clientWidth, H = flow.clientHeight, N = FL.length;
   const big = Math.min(H * .94, W * (W < 700 ? .62 : .36)), r = 1.3;
   const SZ = [[big / r, big], [big / r * .6, big * .6], [big / r * .34, big * .34], [big / r * .2, big * .2], [big / r * .12, big * .12]];
@@ -812,10 +831,10 @@ function layout() {
   $('ticks').style.transform = 'translateX(' + (-(((act % 200) + 200) % 200) * 50 - 50) + 'px)';
 }
 function fGo(n) { act = n; layout(); fRestart(); }
-function fRestart() { clearTimeout(ft); if (!reduce) ft = setTimeout(() => { if (Date.now() - touched > 6000) act++; layout(); fRestart(); }, 3400); }
+function fRestart() { clearTimeout(ft); if (!HAS_FLOW) return; if (!reduce) ft = setTimeout(() => { if (Date.now() - touched > 6000) act++; layout(); fRestart(); }, 3400); }
 tiles.forEach(el => el.addEventListener('click', () => { touched = Date.now(); const d = +el.dataset.d; if (d === 0) { const nm = FL[((act % FL.length) + FL.length) % FL.length][0], wi = WORLDS.findIndex(w => w.projects.indexOf(nm) >= 0); if (wi >= 0) openW(wi); else openP(byName[nm]); } else fGo(act + d); }));
 flow.addEventListener('mouseenter', () => touched = Date.now());
-$('fPrev').onclick = () => { touched = Date.now(); fGo(act - 1); }; $('fNext').onclick = () => { touched = Date.now(); fGo(act + 1); };
+if (HAS_FLOW) { $('fPrev').onclick = () => { touched = Date.now(); fGo(act - 1); }; $('fNext').onclick = () => { touched = Date.now(); fGo(act + 1); }; }
 swipe(flow, d => { touched = Date.now(); fGo(act + d); });
 addEventListener('resize', layout); layout(); fRestart();
 
@@ -871,6 +890,7 @@ function placeM() { const r = mst.getBoundingClientRect(), c = mst.querySelector
   $('mlines').innerHTML = L; }
 addEventListener('resize', placeM); if (document.fonts) document.fonts.ready.then(placeM); placeM();
 /* video */
+if ($('reel')) {
 const VID = [['mixo-llamada','Mixo · Reel',1],['mixo-evento','Mixo · Evento'],['prop-ovl','Real estate · Recorrido'],['masea','Real estate · Reel'],['prop-funes','Real estate · Recorrido'],['prop-entrerios','Real estate · Recorrido'],['prop-casa','Real estate · Recorrido']];
 const reel = $('reel');
 reel.innerHTML = VID.map((v, i) => '<button class="rc' + (v[2] ? ' h' : '') + '" data-v="' + i + '" aria-label="Ver video: ' + esc(v[1]) + '"><video src="vid/' + v[0] + '.mp4#t=0.1" muted loop playsinline preload="metadata"></video><span class="n">' + pad2(i + 1) + '</span><span class="cap"><span><small>' + esc(v[1]) + '</small></span><span class="pl"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span></span></button>').join('');
@@ -888,6 +908,7 @@ const vbox = $('vbox'), vbV = $('vbV');
 function vClose() { vbV.pause(); vbV.removeAttribute('src'); vbV.load(); vbox.classList.remove('open'); document.body.style.overflow = ''; }
 rcs.forEach(c => c.addEventListener('click', () => { if (rmoved) return; const v = VID[+c.dataset.v]; $('vbT').textContent = v[1]; vbV.removeAttribute('poster'); vbV.src = 'vid/' + v[0] + '.mp4'; vbox.classList.add('open'); document.body.style.overflow = 'hidden'; vbV.muted = false; vbV.play().catch(() => {}); }));
 $('vbX').onclick = vClose; document.addEventListener('keydown', e => { if (e.key === 'Escape' && vbox.classList.contains('open')) vClose(); });
+}
 $('marq').innerHTML = ('<span>' + ['DIRECCIÓN CREATIVA','FOTOGRAFÍA','CONTENIDO AUDIOVISUAL','MAKE IT ICONIC'].map(w => w + '<i>✶</i>').join('') + '</span>').repeat(6);
 
 /* servicios */
@@ -1037,7 +1058,7 @@ document.addEventListener('keydown', e => {
 const nav = $('nav'), burger = $('burger');
 burger.onclick = () => { const o = nav.classList.toggle('open'); burger.setAttribute('aria-expanded', o); };
 nav.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); burger.setAttribute('aria-expanded', false); }));
-function onScroll() { nav.classList.toggle('solid', scrollY > innerHeight * .5);
+function onScroll() { nav.classList.toggle('solid', scrollY > innerHeight * .85);
   const r = ph.getBoundingClientRect(), vh = innerHeight; let p = Math.min(1, Math.max(0, (vh * .85 - r.top) / (vh * .55)));
   let n = Math.round(p * phW.length); phW.forEach((s, k) => s.classList.toggle('on', k < n));
 }
